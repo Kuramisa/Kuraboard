@@ -10,7 +10,7 @@ const App = () => {
         pollInterval: 100000
     });
 
-    if (VITE_UNDER_DEV === true) return <UnderDevelopment/>;
+    if (VITE_UNDER_DEV === "true") return <UnderDevelopment/>;
 
     if (loading) return <BotLoading/>;
     if (botError) return <BotOffline/>;
