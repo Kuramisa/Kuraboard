@@ -6,7 +6,7 @@ import {UnderDevelopment, BotLoading, BotOffline} from "./components/status";
 const {VITE_UNDER_DEV} = import.meta.env;
 
 const App = () => {
-    const {loading, error: botError, data: {clientUser: bot} = {}} = useQuery(FetchClient, {
+    const {loading, error: botError} = useQuery(FetchClient, {
         pollInterval: 100000
     });
 
