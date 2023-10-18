@@ -1,6 +1,9 @@
 const UnderDevelopment = () => {
     return (
-        <div className="flex flex-column justify-content-center align-items-center" style={{height: "90vh"}}>
+        <div
+            className="flex flex-column justify-content-center align-items-center"
+            style={{height: "90vh", lineHeight: 0.5}}
+        >
             <img alt="Under Development" src="/logo.png" style={{width: "96px"}}/>
             <h2>Kuramisa</h2>
             <h3>Under Development</h3>
