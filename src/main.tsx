@@ -1,4 +1,4 @@
-import "primereact/resources/themes/arya-orange/theme.css";
+import "primereact/resources/themes/viva-dark/theme.css";
 import "/node_modules/primeflex/primeflex.css";
 import "./index.css";
 
