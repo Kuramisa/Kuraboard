@@ -17,12 +17,15 @@ import {RetryLink} from "@apollo/client/link/retry";
 import {createUploadLink} from "apollo-upload-client";
 
 import {PrimeReactProvider} from "primereact/api";
+import {IconContext} from "react-icons";
+import {AuthProvider} from "./AuthProvider.tsx";
+
 
 const {VITE_SERVER_URL} = import.meta.env;
 
 const httpLink = createUploadLink({
     uri: VITE_SERVER_URL,
-});
+}) as any;
 
 const authLink = setContext((_, {headers}) => {
     const token = localStorage.getItem("kuramisaToken");
@@ -71,11 +74,15 @@ export default (
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={client}>
-                <PrimeReactProvider>
-                    <Router>
-                        <App/>
-                    </Router>
-                </PrimeReactProvider>
+                <IconContext.Provider value={{className: "mr-1", style: {marginTop: "2.5px"}}}>
+                    <PrimeReactProvider>
+                        <Router>
+                            <AuthProvider>
+                                <App/>
+                            </AuthProvider>
+                        </Router>
+                    </PrimeReactProvider>
+                </IconContext.Provider>
             </ApolloProvider>
         </PersistGate>
     </Provider>
