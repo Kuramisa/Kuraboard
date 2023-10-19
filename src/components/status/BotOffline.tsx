@@ -16,7 +16,7 @@ const BotOffline = () => {
             <h2>Kuramisa</h2>
             <h3 className="text-red-500">Offline</h3>
             <h4>Please contact the developer</h4>
-            <h4>or join</h4>
+            <h5>or join</h5>
             <Button
                 onClick={() => window.open(invUrl, "_self")}
                 label="Our Support Server"
