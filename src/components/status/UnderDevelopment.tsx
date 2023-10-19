@@ -1,3 +1,7 @@
+import {Button} from "primereact/button";
+
+const invUrl = "https://discord.com/invite/T95vjSCM";
+
 const UnderDevelopment = () => {
     return (
         <div
@@ -8,6 +12,14 @@ const UnderDevelopment = () => {
             <h2>Kuramisa</h2>
             <h3>Under Development</h3>
             <h4>Please check back later ^^</h4>
+            <h4>Meanwhile you can join</h4>
+            <Button
+                onClick={() => window.open(invUrl, "_self")}
+                label="Our Support Server"
+                severity="success"
+                size="small"
+                outlined
+            />
         </div>
     );
 };
