@@ -1,0 +1,1 @@
+export const invUrl = "https://discord.gg/e2u6rQUJ9C";

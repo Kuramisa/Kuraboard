@@ -1,6 +1,6 @@
 import {Button} from "primereact/button";
 
-const invUrl = "https://discord.com/invite/T95vjSCM";
+import {invUrl} from "../../exports";
 
 const BotOffline = () => {
     return (
