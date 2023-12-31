@@ -31,6 +31,7 @@ const AvatarMenu = ({auth}: { auth: any }) => {
                 <Avatar
                     image={auth.avatarURL}
                     size="xlarge"
+                    imageAlt="Avatar"
                     shape="circle"
                     className="p-shadow-8"
                     onClick={onClick}
