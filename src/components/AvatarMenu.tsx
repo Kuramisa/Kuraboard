@@ -29,7 +29,7 @@ const AvatarMenu = ({auth}: { auth: any }) => {
             <Tooltip target=".user-profile-speeddial .p-speeddial-action" position="left"/>
             <SpeedDial
                 model={items}
-                radius={120}
+                radius={90}
                 className="user-profile-speeddial"
                 buttonTemplate={({onClick}) => (
                     <Zoom top cascade>
