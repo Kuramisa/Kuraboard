@@ -5,6 +5,7 @@ import {Button} from "primereact/button";
 
 import {BiLogInCircle} from "react-icons/bi";
 import AvatarMenu from "./AvatarMenu";
+import Zoom from "react-reveal/Zoom";
 
 const authUrl = process.env.NODE_ENV === "production"
     ? "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=https%3A%2F%2Fkuramisa.com%2Flogin&response_type=code&scope=guilds%20identify"
@@ -16,8 +17,10 @@ const Navigation = () => {
     return (
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
             <div className="flex gap-2 align-items-center justify-content-start">
-                <img alt="Kuramisa" className="fadeinleft" src="/logo.png" style={{width: "64px"}}/>
-                <h3 className="fadeinup">Kuramisa</h3>
+                <Zoom top cascade>
+                    <img alt="Kuramisa" src="/logo.png" style={{width: "64px"}}/>
+                    <h3>Kuramisa</h3>
+                </Zoom>
             </div>
             <div className="flex gap-2 align-items-center justify-content-center">
             </div>
@@ -29,7 +32,6 @@ const Navigation = () => {
                         label="Login"
                         severity="success"
                         outlined
-                        className="fadeinright"
                         onClick={() => window.open(authUrl, "_self")}
                         icon={<BiLogInCircle/>}
                     />
