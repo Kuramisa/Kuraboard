@@ -8,13 +8,13 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {
     ApolloClient,
     ApolloLink,
-    ApolloProvider,
+    ApolloProvider, createHttpLink,
     InMemoryCache
 } from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 import {onError} from "@apollo/client/link/error";
 import {RetryLink} from "@apollo/client/link/retry";
-import {createUploadLink} from "apollo-upload-client";
+//import {createUploadLink} from "apollo-upload-client";
 
 import {PrimeReactProvider} from "primereact/api";
 import {IconContext} from "react-icons";
@@ -23,9 +23,13 @@ import {AuthProvider} from "./AuthProvider.tsx";
 
 const {VITE_SERVER_URL} = import.meta.env;
 
-const httpLink = createUploadLink({
+/*const httpLink = createUploadLink({
     uri: VITE_SERVER_URL,
-}) as any;
+}) as any;*/
+
+const httpLink = createHttpLink({
+    uri: VITE_SERVER_URL,
+});
 
 const authLink = setContext((_, {headers}) => {
     const token = localStorage.getItem("kuramisaToken");
