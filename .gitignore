@@ -1,4 +1,6 @@
 .env
+.yarn
+.yarnrc.yml
 
 # Logs
 logs
