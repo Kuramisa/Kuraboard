@@ -24,6 +24,7 @@ const AvatarMenu = ({auth}: { auth: any }) => {
 
     return (
         <SpeedDial
+            className="fadeinright"
             model={items}
             radius={120}
             buttonTemplate={({onClick}) => (
