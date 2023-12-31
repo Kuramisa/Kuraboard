@@ -14,23 +14,23 @@ const AvatarMenu = ({auth}: { auth: any }) => {
     const items: MenuItem[] = [
         {
             label: "Logout",
-            icon: <BiLogOutCircle size="1.5rem" className="menu-button-logout" color="lightred"/>,
+            icon: <BiLogOutCircle size="1.5rem" color="red"/>,
             command: () => navigate("/logout"),
         },
         {
             label: "Profile",
-            icon: <BiUserCircle className="menu-button-profile" size="1.5rem" color="cyan"/>,
+            icon: <BiUserCircle size="1.5rem" color="cyan"/>,
             command: () => navigate("/profile")
         }
     ];
 
     return (
         <>
-            <Tooltip target=".p-speeddial-action .menu-button-logout" content="Logout" position="bottom"/>
-            <Tooltip target=".p-speeddial-action .menu-button-profile" content="Profile" position="left"/>
+            <Tooltip target=".user-profile-speeddial .p-speeddial-action" position="left"/>
             <SpeedDial
                 model={items}
                 radius={120}
+                className="user-profile-speeddial"
                 buttonTemplate={({onClick}) => (
                     <Zoom top cascade>
                         <Avatar
