@@ -18,4 +18,4 @@ export type Bot = {
     username: string;
     users: number;
     verified: boolean;
-}
+};
