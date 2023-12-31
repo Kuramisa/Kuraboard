@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import {useContext} from "react";
-import {AuthContext} from "../providers/AuthProvider.tsx";
+import {AuthContext} from "../providers/AuthProvider";
 import {Button} from "primereact/button";
 
 import {BiLogInCircle} from "react-icons/bi";
+import AvatarMenu from "./AvatarMenu";
 
 const authUrl = process.env.NODE_ENV === "production"
     ? "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=https%3A%2F%2Fkuramisa.com%2Flogin&response_type=code&scope=guilds%20identify"
@@ -22,7 +23,7 @@ const Navigation = () => {
             </div>
             <div className="flex gap-2 align-items-center justify-content-end">
                 {auth ? (
-                    <></>
+                    <AvatarMenu auth={auth}/>
                 ) : (
                     <Button
                         label="Login"
