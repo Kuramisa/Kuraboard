@@ -1,4 +1,5 @@
 import "primereact/resources/themes/viva-dark/theme.css";
+import "primeflex/primeflex.css";
 import "./index.css";
 
 import {createRoot} from "react-dom/client";
