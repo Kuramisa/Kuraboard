@@ -5,9 +5,9 @@ const Home = () => {
             <h1>
                 I know, I know. It&apos;s empty 😿
             </h1>
-            <h2>
+            <h6>
                 I&apos;m working on it, I promise!
-            </h2>
+            </h6>
         </div>
     );
 };
