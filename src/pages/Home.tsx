@@ -1,7 +1,7 @@
 const Home = () => {
 
     return (
-        <div>
+        <div className="p-5 flex flex-column justify-content-center align-items-center">
             <h1>
                 I know, I know. It&apos;s empty 😿
             </h1>
