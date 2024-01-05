@@ -1,28 +1,93 @@
 import PropTypes from "prop-types";
-import {useContext} from "react";
+import {Fragment, useContext, useRef} from "react";
 import {AuthContext} from "../providers/AuthProvider";
-import {Button} from "primereact/button";
+import {Button, ButtonProps} from "primereact/button";
 
 import {BiLogInCircle} from "react-icons/bi";
 import AvatarMenu from "./AvatarMenu";
 import Zoom from "react-reveal/Zoom";
+import {useNavigate} from "react-router-dom";
+import {authUrl} from "../exports.tsx";
+import {MenuItem} from "primereact/menuitem";
+import {TieredMenu} from "primereact/tieredmenu";
 
-const authUrl = process.env.NODE_ENV === "production"
-    ? "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=https%3A%2F%2Fkuramisa.com%2Flogin&response_type=code&scope=guilds%20identify"
-    : "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Flogin&response_type=code&scope=guilds%20identify";
+const buttons: (ButtonProps & { to: string })[] = [
+    {
+        label: "Home",
+        severity: "success",
+        outlined: true,
+        to: "/"
+    },
+    {
+        label: "Valorant",
+        severity: "danger",
+        outlined: true,
+        to: "/valorant"
+    }
+];
 
 const Navigation = () => {
     const {auth} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const menu = useRef<TieredMenu>(null);
+
+    const valorantMenu: MenuItem[] = [
+        {
+            label: "Weapons",
+            command: () => navigate("/valorant/weapons"),
+        }
+    ];
 
     return (
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
             <div className="flex gap-2 align-items-center justify-content-start">
-                <Zoom top cascade>
+                <Zoom cascade left>
                     <img alt="Kuramisa" src="/logo.png" style={{width: "64px"}}/>
                     <h3>Kuramisa</h3>
                 </Zoom>
-            </div>
-            <div className="flex gap-2 align-items-center justify-content-center">
+                <Zoom cascade top>
+                    <nav className="ml-3">
+                        {buttons.map((button, index) => (
+                            button.label === "Valorant" ? (
+                                <Fragment key={index}>
+                                    <TieredMenu
+                                        ref={menu}
+                                        model={valorantMenu}
+                                        popup
+                                        className="border-noround"
+                                        breakpoint="767px"
+                                    />
+                                    <Button
+                                        className={`${index !== 0 ? "ml-1" : ""} border-noround`}
+                                        outlined={button.outlined}
+                                        severity={button.severity}
+                                        onClick={(event) => menu.current?.toggle(event)}
+                                    >
+                                        <Zoom key={index} cascade top>
+                                            <span key={index} className="font-semibold">
+                                                {button.label}
+                                            </span>
+                                        </Zoom>
+                                    </Button>
+                                </Fragment>
+                            ) : (
+                                <Button
+                                    key={index}
+                                    className={`${index !== 0 ? "ml-1" : ""} border-noround`}
+                                    outlined={button.outlined}
+                                    severity={button.severity}
+                                    onClick={() => navigate(button.to)}
+                                >
+                                    <Zoom cascade top>
+                                    <span className="font-semibold">
+                                        {button.label}
+                                    </span>
+                                    </Zoom>
+                                </Button>
+                            )
+                        ))}
+                    </nav>
+                </Zoom>
             </div>
             <div className="flex gap-2 align-items-center justify-content-end">
                 {auth ? (
