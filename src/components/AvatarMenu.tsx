@@ -32,7 +32,7 @@ const AvatarMenu = ({auth}: { auth: any }) => {
                 radius={90}
                 className="user-profile-speeddial"
                 buttonTemplate={({onClick}) => (
-                    <Zoom top cascade>
+                    <Zoom right cascade>
                         <Avatar
                             image={auth.avatarURL}
                             size="xlarge"
