@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Home from "./pages/Home.tsx";
+import ValorantWeapons from "./pages/valorant/ValorantWeapons.tsx";
 
 const {VITE_UNDER_DEV} = import.meta.env;
 
@@ -25,6 +26,9 @@ const App = () => {
             <Navigation/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/valorant">
+                    <Route path="weapons" element={<ValorantWeapons/>}/>
+                </Route>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/logout" element={<Logout/>}/>
             </Routes>
