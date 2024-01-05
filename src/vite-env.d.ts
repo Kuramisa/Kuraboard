@@ -19,3 +19,11 @@ export type Bot = {
     users: number;
     verified: boolean;
 };
+
+export type VWeaponCategory =
+    | "Sidearm"
+    | "SMG"
+    | "Shotgun"
+    | "Rifle"
+    | "Sniper"
+    | "Heavy"
