@@ -3,19 +3,17 @@ import {FetchValorantWeapons} from "../../gql/valorant.tsx";
 import {Weapons} from "@valapi/valorant-api.com";
 import {Image} from "primereact/image";
 import {filterAndSortWeapons} from "../../../util.tsx";
-import {Fragment, useState} from "react";
+import {Fragment} from "react";
 import {Divider} from "primereact/divider";
 
+
+// TODO: Add overlays upon clicking on a weapon (for info)
 const ValorantWeapons = () => {
     const {data: {weapons} = {}, loading, error} = useQuery(FetchValorantWeapons) as {
         data: { weapons: Weapons.Weapons<"en-US">[] },
         loading: boolean,
         error?: ApolloError
     };
-
-    // TODO: Remove this later
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [currentWeapon, setCurrentWeapon] = useState<Weapons.Weapons<"en-US"> | null>(null);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
@@ -27,11 +25,6 @@ const ValorantWeapons = () => {
     const rifles = filterAndSortWeapons(weapons, "Rifle");
     const snipers = filterAndSortWeapons(weapons, "Sniper");
     const heavies = filterAndSortWeapons(weapons, "Heavy");
-
-    const changeCurrentWeapon = (weapon?: Weapons.Weapons<"en-US">) => {
-        setCurrentWeapon(weapon ?? null);
-    };
-
     return (
         <div className="flex flex-column p-3 justify-content-center align-items-center">
             <h1>Valorant Weapons</h1>
@@ -45,7 +38,6 @@ const ValorantWeapons = () => {
                             <Fragment key={weapon.uuid}>
                                 <div className="flex p-2 flex-column align-items-center">
                                     <Image
-                                        onClick={() => changeCurrentWeapon(weapon)}
                                         src={weapon.displayIcon}
                                         alt={weapon.displayName} width="128"
                                     />
@@ -65,7 +57,6 @@ const ValorantWeapons = () => {
                                 {smgs.map(weapon => (
                                     <div key={weapon.uuid} className="flex p-2 flex-column align-items-center">
                                         <Image
-                                            onClick={() => changeCurrentWeapon(weapon)}
                                             src={weapon.displayIcon}
                                             alt={weapon.displayName} width="128"
                                         />
@@ -81,7 +72,6 @@ const ValorantWeapons = () => {
                                     <Fragment key={weapon.uuid}>
                                         <div className="flex p-2 flex-column align-items-center">
                                             <Image
-                                                onClick={() => changeCurrentWeapon(weapon)}
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
                                             />
@@ -102,7 +92,6 @@ const ValorantWeapons = () => {
                             <Fragment key={weapon.uuid}>
                                 <div className="flex p-2 flex-column align-items-center">
                                     <Image
-                                        onClick={() => changeCurrentWeapon(weapon)}
                                         src={weapon.displayIcon}
                                         alt={weapon.displayName} width="128"
                                     />
@@ -123,7 +112,6 @@ const ValorantWeapons = () => {
                                     <Fragment key={weapon.uuid}>
                                         <div className="flex p-2 flex-column align-items-center">
                                             <Image
-                                                onClick={() => changeCurrentWeapon(weapon)}
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
                                             />
@@ -141,7 +129,6 @@ const ValorantWeapons = () => {
                                     <Fragment key={weapon.uuid}>
                                         <div className="flex p-2 flex-column align-items-center">
                                             <Image
-                                                onClick={() => changeCurrentWeapon(weapon)}
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
                                             />
