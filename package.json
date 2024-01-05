@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.8.8",
     "@reduxjs/toolkit": "^2.0.1",
+    "@valapi/valorant-api.com": "^3.3.0",
     "buffer": "^6.0.3",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
