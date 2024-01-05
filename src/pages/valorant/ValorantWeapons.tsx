@@ -15,9 +15,9 @@ const ValorantWeapons = () => {
         error?: ApolloError
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-    if (!weapons) return <p>No weapons found</p>;
+    if (loading) return <></>;
+    if (error) return <></>;
+    if (!weapons) return <></>;
 
     const sidearms = filterAndSortWeapons(weapons, "Sidearm");
     const smgs = filterAndSortWeapons(weapons, "SMG");
