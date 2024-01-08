@@ -94,13 +94,15 @@ const Navigation = () => {
                 {auth ? (
                     <AvatarMenu auth={auth} />
                 ) : (
-                    <Button
-                        label="Login"
-                        severity="success"
-                        outlined
-                        onClick={() => window.open(authUrl, "_self")}
-                        icon={<BiLogInCircle />}
-                    />
+                    <Zoom cascade right>
+                        <Button
+                            label="Login"
+                            severity="success"
+                            outlined
+                            onClick={() => window.open(authUrl, "_self")}
+                            icon={<BiLogInCircle />}
+                        />
+                    </Zoom>
                 )}
             </div>
         </nav>
