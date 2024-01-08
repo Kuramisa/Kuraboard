@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
-import {Fragment, useContext, useRef} from "react";
-import {AuthContext} from "../providers/AuthProvider";
-import {Button, ButtonProps} from "primereact/button";
+import { Fragment, useContext, useRef } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import { Button, ButtonProps } from "primereact/button";
 
-import {BiLogInCircle} from "react-icons/bi";
+import { BiLogInCircle } from "react-icons/bi";
 import AvatarMenu from "./AvatarMenu";
 import Zoom from "react-reveal/Zoom";
-import {useNavigate} from "react-router-dom";
-import {authUrl} from "../exports.tsx";
-import {MenuItem} from "primereact/menuitem";
-import {TieredMenu} from "primereact/tieredmenu";
+import { useNavigate } from "react-router-dom";
+import { authUrl } from "../exports.tsx";
+import { MenuItem } from "primereact/menuitem";
+import { TieredMenu } from "primereact/tieredmenu";
 
 const buttons: (ButtonProps & { to: string })[] = [
     {
@@ -27,14 +27,14 @@ const buttons: (ButtonProps & { to: string })[] = [
 ];
 
 const Navigation = () => {
-    const {auth} = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
     const menu = useRef<TieredMenu>(null);
 
     const valorantMenu: MenuItem[] = [
         {
             label: "Weapons",
-            command: () => navigate("/valorant/weapons"),
+            command: () => navigate("/valorant/weapons")
         }
     ];
 
@@ -42,21 +42,21 @@ const Navigation = () => {
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
             <div className="flex gap-2 align-items-center justify-content-start">
                 <Zoom cascade left>
-                    <img alt="Kuramisa" src="/logo.png" style={{width: "64px"}}/>
+                    <img alt="Kuramisa" src="/logo.png" style={{ width: "64px" }} />
                     <h3>Kuramisa</h3>
                 </Zoom>
-                <Zoom cascade top>
-                    <nav className="ml-3">
-                        {buttons.map((button, index) => (
-                            button.label === "Valorant" ? (
-                                <Fragment key={index}>
-                                    <TieredMenu
-                                        ref={menu}
-                                        model={valorantMenu}
-                                        popup
-                                        className="border-noround"
-                                        breakpoint="767px"
-                                    />
+                <nav className="flex justify-content-between align-items-center ml-3">
+                    {buttons.map((button, index) => (
+                        button.label === "Valorant" ? (
+                            <Fragment key={index}>
+                                <TieredMenu
+                                    ref={menu}
+                                    model={valorantMenu}
+                                    popup
+                                    className="border-noround"
+                                    breakpoint="767px"
+                                />
+                                <Zoom cascade top>
                                     <Button
                                         className={`${index !== 0 ? "ml-1" : ""} border-noround`}
                                         outlined={button.outlined}
@@ -69,36 +69,37 @@ const Navigation = () => {
                                             </span>
                                         </Zoom>
                                     </Button>
-                                </Fragment>
-                            ) : (
+                                </Zoom>
+                            </Fragment>
+                        ) : (
+                            <Zoom key={index} cascade top>
                                 <Button
-                                    key={index}
                                     className={`${index !== 0 ? "ml-1" : ""} border-noround`}
                                     outlined={button.outlined}
                                     severity={button.severity}
                                     onClick={() => navigate(button.to)}
                                 >
                                     <Zoom cascade top>
-                                    <span className="font-semibold">
-                                        {button.label}
-                                    </span>
+                                        <span className="font-semibold">
+                                            {button.label}
+                                        </span>
                                     </Zoom>
                                 </Button>
-                            )
-                        ))}
-                    </nav>
-                </Zoom>
+                            </Zoom>
+                        )
+                    ))}
+                </nav>
             </div>
             <div className="flex gap-2 align-items-center justify-content-end">
                 {auth ? (
-                    <AvatarMenu auth={auth}/>
+                    <AvatarMenu auth={auth} />
                 ) : (
                     <Button
                         label="Login"
                         severity="success"
                         outlined
                         onClick={() => window.open(authUrl, "_self")}
-                        icon={<BiLogInCircle/>}
+                        icon={<BiLogInCircle />}
                     />
                 )}
             </div>
