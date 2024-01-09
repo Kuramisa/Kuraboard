@@ -11,7 +11,7 @@ import { authUrl } from "../exports.tsx";
 import { MenuItem } from "primereact/menuitem";
 import { TieredMenu } from "primereact/tieredmenu";
 
-const buttons: (ButtonProps & { to: string })[] = [
+const buttons: (ButtonProps & { to?: string })[] = [
     {
         label: "Home",
         severity: "success",
@@ -21,8 +21,7 @@ const buttons: (ButtonProps & { to: string })[] = [
     {
         label: "Valorant",
         severity: "danger",
-        outlined: true,
-        to: "/valorant"
+        outlined: true
     }
 ];
 
@@ -45,50 +44,51 @@ const Navigation = () => {
                     <img alt="Kuramisa" src="/logo.png" style={{ width: "64px" }} />
                     <h3>Kuramisa</h3>
                 </Zoom>
-                <nav className="flex justify-content-between align-items-center ml-3">
-                    {buttons.map((button, index) => (
-                        button.label === "Valorant" ? (
-                            <Fragment key={index}>
-                                <TieredMenu
-                                    ref={menu}
-                                    model={valorantMenu}
-                                    popup
-                                    className="border-noround"
-                                    breakpoint="767px"
-                                />
-                                <Zoom cascade top>
+                <div className="ml-3">
+                    <TieredMenu
+                        ref={menu}
+                        popup
+                        model={valorantMenu}
+                        breakpoint="767px"
+                    />
+                    <div className="flex justify-content-between">
+                        {buttons.map((button, index) => (
+                            button.label === "Valorant" ? (
+                                <Fragment key={index}>
+                                    <Zoom cascade top>
+                                        <Button
+                                            className={`${index !== 0 ? "ml-1" : ""} border-noround`}
+                                            outlined={button.outlined}
+                                            severity={button.severity}
+                                            onClick={(event) => menu.current?.toggle(event)}
+                                        >
+                                            <Zoom key={index} cascade top>
+                                                <span key={index} className="font-semibold">
+                                                    {button.label}
+                                                </span>
+                                            </Zoom>
+                                        </Button>
+                                    </Zoom>
+                                </Fragment>
+                            ) : (
+                                <Zoom key={index} cascade top>
                                     <Button
                                         className={`${index !== 0 ? "ml-1" : ""} border-noround`}
                                         outlined={button.outlined}
                                         severity={button.severity}
-                                        onClick={(event) => menu.current?.toggle(event)}
+                                        onClick={() => navigate(button.to ? button.to : "/")}
                                     >
-                                        <Zoom key={index} cascade top>
-                                            <span key={index} className="font-semibold">
+                                        <Zoom cascade top>
+                                            <span className="font-semibold">
                                                 {button.label}
                                             </span>
                                         </Zoom>
                                     </Button>
                                 </Zoom>
-                            </Fragment>
-                        ) : (
-                            <Zoom key={index} cascade top>
-                                <Button
-                                    className={`${index !== 0 ? "ml-1" : ""} border-noround`}
-                                    outlined={button.outlined}
-                                    severity={button.severity}
-                                    onClick={() => navigate(button.to)}
-                                >
-                                    <Zoom cascade top>
-                                        <span className="font-semibold">
-                                            {button.label}
-                                        </span>
-                                    </Zoom>
-                                </Button>
-                            </Zoom>
-                        )
-                    ))}
-                </nav>
+                            )
+                        ))}
+                    </div>
+                </div>
             </div>
             <div className="flex gap-2 align-items-center justify-content-end">
                 {auth ? (
