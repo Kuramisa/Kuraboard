@@ -1,19 +1,23 @@
-import {ApolloError, useQuery} from "@apollo/client";
-import {FetchValorantWeapons} from "../../gql/valorant.tsx";
-import {Weapons} from "@valapi/valorant-api.com";
-import {Image} from "primereact/image";
-import {filterAndSortWeapons} from "../../../util.tsx";
-import {Fragment} from "react";
-import {Divider} from "primereact/divider";
+import { ApolloError, useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+import { FetchValorantWeapons } from "../../gql/valorant.tsx";
+import { Weapons } from "@valapi/valorant-api.com";
+import { Image } from "primereact/image";
+import { filterAndSortWeapons } from "../../../util.tsx";
+import { Fragment } from "react";
+import { Divider } from "primereact/divider";
+
+import ValorantWeaponTooltip from "../../components/ValorantWeaponTooltip.tsx";
 
 
-// TODO: Add overlays upon clicking on a weapon (for info)
 const ValorantWeapons = () => {
-    const {data: {weapons} = {}, loading, error} = useQuery(FetchValorantWeapons) as {
+    const { data: { weapons } = {}, loading, error } = useQuery(FetchValorantWeapons) as {
         data: { weapons: Weapons.Weapons<"en-US">[] },
         loading: boolean,
         error?: ApolloError
     };
+
+    const navigate = useNavigate();
 
     if (loading) return <></>;
     if (error) return <></>;
@@ -25,6 +29,7 @@ const ValorantWeapons = () => {
     const rifles = filterAndSortWeapons(weapons, "Rifle");
     const snipers = filterAndSortWeapons(weapons, "Sniper");
     const heavies = filterAndSortWeapons(weapons, "Heavy");
+
     return (
         <div className="flex flex-column p-3 justify-content-center align-items-center">
             <h1>Valorant Weapons</h1>
@@ -36,33 +41,69 @@ const ValorantWeapons = () => {
                         </Divider>
                         {sidearms.map(((weapon, index) => (
                             <Fragment key={weapon.uuid}>
+                                <ValorantWeaponTooltip
+                                    weapons={sidearms}
+                                    weapon={weapon}
+                                    index={index}
+                                    weaponType="Sidearm"
+                                />
                                 <div className="flex p-2 flex-column align-items-center">
                                     <Image
                                         src={weapon.displayIcon}
-                                        alt={weapon.displayName} width="128"
+                                        alt={weapon.displayName} width="86"
+                                        onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
+                                        className={`sidearm-${index}`}
                                     />
-                                    <p>{weapon.displayName}</p>
-                                    {index !== sidearms.length - 1 && <Divider type="dashed"/>}
+                                    <div className="flex flex-column align-items-center">
+                                        <p>{weapon.displayName}</p>
+                                        <div className="flex align-items-center justify-content-center">
+                                            <Image
+                                                src="/credits_icon.webp"
+                                                width="16"
+                                            />
+                                            <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                        </div>
+                                    </div>
+                                    {index !== sidearms.length - 1 && <Divider type="dashed" />}
                                 </div>
                             </Fragment>
                         )))}
                     </div>
-                    <Divider layout="vertical"/>
+                    <Divider layout="vertical" />
                     <div className="col">
                         <div className="grid">
                             <div className="col">
                                 <Divider align="center">
                                     <h2>SMGs</h2>
                                 </Divider>
-                                {smgs.map(weapon => (
-                                    <div key={weapon.uuid} className="flex p-2 flex-column align-items-center">
-                                        <Image
-                                            src={weapon.displayIcon}
-                                            alt={weapon.displayName} width="128"
+                                {smgs.map(((weapon, index) => (
+                                    <Fragment key={weapon.uuid}>
+                                        <ValorantWeaponTooltip
+                                            weapons={smgs}
+                                            weapon={weapon}
+                                            index={index}
+                                            weaponType="SMG"
                                         />
-                                        <p>{weapon.displayName}</p>
-                                    </div>
-                                ))}
+                                        <div className="flex p-2 flex-column align-items-center">
+                                            <Image
+                                                src={weapon.displayIcon}
+                                                alt={weapon.displayName} width="128"
+                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
+                                                className={`smg-${index}`}
+                                            />
+                                            <div className="flex flex-column align-items-center">
+                                                <p>{weapon.displayName}</p>
+                                                <div className="flex align-items-center justify-content-center">
+                                                    <Image
+                                                        src="/credits_icon.webp"
+                                                        width="16"
+                                                    />
+                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Fragment>
+                                )))}
                             </div>
                             <div className="col">
                                 <Divider align="center">
@@ -70,38 +111,72 @@ const ValorantWeapons = () => {
                                 </Divider>
                                 {shotguns.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
+                                        <ValorantWeaponTooltip
+                                            weapons={shotguns}
+                                            weapon={weapon}
+                                            index={index}
+                                            weaponType="Shotgun"
+                                        />
                                         <div className="flex p-2 flex-column align-items-center">
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
+                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
+                                                className={`shotgun-${index}`}
                                             />
-                                            <p>{weapon.displayName}</p>
+                                            <div className="flex flex-column align-items-center">
+                                                <p>{weapon.displayName}</p>
+                                                <div className="flex align-items-center justify-content-center">
+                                                    <Image
+                                                        src="/credits_icon.webp"
+                                                        width="16"
+                                                    />
+                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        {index !== shotguns.length - 1 && <Divider type="dashed"/>}
+                                        {index !== shotguns.length - 1 && <Divider type="dashed" />}
                                     </Fragment>
                                 )))}
                             </div>
                         </div>
                     </div>
-                    <Divider layout="vertical"/>
+                    <Divider layout="vertical" />
                     <div className="col">
                         <Divider align="center">
                             <h2>Rifles</h2>
                         </Divider>
                         {rifles.map(((weapon, index) => (
                             <Fragment key={weapon.uuid}>
+                                <ValorantWeaponTooltip
+                                    weapons={rifles}
+                                    weapon={weapon}
+                                    index={index}
+                                    weaponType="Rifle"
+                                />
                                 <div className="flex p-2 flex-column align-items-center">
                                     <Image
                                         src={weapon.displayIcon}
                                         alt={weapon.displayName} width="128"
+                                        onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
+                                        className={`rifle-${index}`}
                                     />
-                                    <p>{weapon.displayName}</p>
+                                    <div className="flex flex-column align-items-center">
+                                        <p>{weapon.displayName}</p>
+                                        <div className="flex align-items-center justify-content-center">
+                                            <Image
+                                                src="/credits_icon.webp"
+                                                width="16"
+                                            />
+                                            <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                {index !== rifles.length - 1 && <Divider type="dashed"/>}
+                                {index !== rifles.length - 1 && <Divider type="dashed" />}
                             </Fragment>
                         )))}
                     </div>
-                    <Divider layout="vertical"/>
+                    <Divider layout="vertical" />
                     <div className="col">
                         <div className="grid">
                             <div className="col">
@@ -110,14 +185,31 @@ const ValorantWeapons = () => {
                                 </Divider>
                                 {snipers.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
+                                        <ValorantWeaponTooltip
+                                            weapons={snipers}
+                                            weapon={weapon}
+                                            index={index}
+                                            weaponType="Sniper"
+                                        />
                                         <div className="flex p-2 flex-column align-items-center">
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
+                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
+                                                className={`sniper-${index}`}
                                             />
-                                            <p>{weapon.displayName}</p>
+                                            <div className="flex flex-column align-items-center">
+                                                <p>{weapon.displayName}</p>
+                                                <div className="flex align-items-center justify-content-center">
+                                                    <Image
+                                                        src="/credits_icon.webp"
+                                                        width="16"
+                                                    />
+                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        {index !== snipers.length - 1 && <Divider type="dashed"/>}
+                                        {index !== snipers.length - 1 && <Divider type="dashed" />}
                                     </Fragment>
                                 )))}
                             </div>
@@ -127,14 +219,31 @@ const ValorantWeapons = () => {
                                 </Divider>
                                 {heavies.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
+                                        <ValorantWeaponTooltip
+                                            weapons={heavies}
+                                            weapon={weapon}
+                                            index={index}
+                                            weaponType="Heavy"
+                                        />
                                         <div className="flex p-2 flex-column align-items-center">
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
+                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
+                                                className={`heavy-${index}`}
                                             />
-                                            <p>{weapon.displayName}</p>
+                                            <div className="flex flex-column align-items-center">
+                                                <p>{weapon.displayName}</p>
+                                                <div className="flex align-items-center justify-content-center">
+                                                    <Image
+                                                        src="/credits_icon.webp"
+                                                        width="16"
+                                                    />
+                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        {index !== heavies.length - 1 && <Divider type="dashed"/>}
+                                        {index !== heavies.length - 1 && <Divider type="dashed" />}
                                     </Fragment>
                                 )))}
                             </div>
