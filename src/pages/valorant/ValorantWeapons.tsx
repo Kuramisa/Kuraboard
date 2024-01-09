@@ -1,5 +1,4 @@
 import { ApolloError, useQuery } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
 import { FetchValorantWeapons } from "../../gql/valorant.tsx";
 import { Weapons } from "@valapi/valorant-api.com";
 import { Image } from "primereact/image";
@@ -10,14 +9,13 @@ import { Divider } from "primereact/divider";
 import ValorantWeaponTooltip from "../../components/ValorantWeaponTooltip.tsx";
 
 
+// TODO: Valorant Weapon Page with Skins on image click
 const ValorantWeapons = () => {
     const { data: { weapons } = {}, loading, error } = useQuery(FetchValorantWeapons) as {
         data: { weapons: Weapons.Weapons<"en-US">[] },
         loading: boolean,
         error?: ApolloError
     };
-
-    const navigate = useNavigate();
 
     if (loading) return <></>;
     if (error) return <></>;
@@ -51,7 +49,6 @@ const ValorantWeapons = () => {
                                     <Image
                                         src={weapon.displayIcon}
                                         alt={weapon.displayName} width="86"
-                                        onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
                                         className={`sidearm-${index}`}
                                     />
                                     <div className="flex flex-column align-items-center">
@@ -88,7 +85,6 @@ const ValorantWeapons = () => {
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
-                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
                                                 className={`smg-${index}`}
                                             />
                                             <div className="flex flex-column align-items-center">
@@ -121,7 +117,6 @@ const ValorantWeapons = () => {
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
-                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
                                                 className={`shotgun-${index}`}
                                             />
                                             <div className="flex flex-column align-items-center">
@@ -158,7 +153,6 @@ const ValorantWeapons = () => {
                                     <Image
                                         src={weapon.displayIcon}
                                         alt={weapon.displayName} width="128"
-                                        onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
                                         className={`rifle-${index}`}
                                     />
                                     <div className="flex flex-column align-items-center">
@@ -195,7 +189,6 @@ const ValorantWeapons = () => {
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
-                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
                                                 className={`sniper-${index}`}
                                             />
                                             <div className="flex flex-column align-items-center">
@@ -229,7 +222,6 @@ const ValorantWeapons = () => {
                                             <Image
                                                 src={weapon.displayIcon}
                                                 alt={weapon.displayName} width="128"
-                                                onClick={() => navigate(`/valorant/weapons/${weapon.uuid}`)}
                                                 className={`heavy-${index}`}
                                             />
                                             <div className="flex flex-column align-items-center">
