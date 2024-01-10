@@ -31,10 +31,12 @@ const ValorantWeapons = () => {
     return (
         <div className="flex flex-column p-3 justify-content-center align-items-center">
             <h1>Valorant Weapons</h1>
-            <div className="flex shadow-8 justify-content-between">
+            <div className="flex p-4 shadow-8 justify-content-between">
                 <div className="grid">
                     <div className="col">
-                        <h2 className="text-center">Sidearms</h2>
+                        <Divider align="center">
+                            <h2>Sidearms</h2>
+                        </Divider>
                         {sidearms.map(((weapon, index) => (
                             <Fragment key={weapon.uuid}>
                                 <ValorantWeaponTooltip
@@ -68,7 +70,9 @@ const ValorantWeapons = () => {
                     <div className="col">
                         <div className="grid">
                             <div className="col">
-                                <h2 className="text-center">SMGs</h2>
+                                <Divider align="center">
+                                    <h2>SMGs</h2>
+                                </Divider>
                                 {smgs.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
                                         <ValorantWeaponTooltip
@@ -98,7 +102,9 @@ const ValorantWeapons = () => {
                                 )))}
                             </div>
                             <div className="col">
-                                <h2 className="text-center">Shotguns</h2>
+                                <Divider align="center">
+                                    <h2>Shotguns</h2>
+                                </Divider>
                                 {shotguns.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
                                         <ValorantWeaponTooltip
@@ -132,7 +138,9 @@ const ValorantWeapons = () => {
                     </div>
                     <Divider layout="vertical" />
                     <div className="col">
-                        <h2 className="text-center">Rifles</h2>
+                        <Divider align="center">
+                            <h2>Rifles</h2>
+                        </Divider>
                         {rifles.map(((weapon, index) => (
                             <Fragment key={weapon.uuid}>
                                 <ValorantWeaponTooltip
@@ -166,7 +174,9 @@ const ValorantWeapons = () => {
                     <div className="col">
                         <div className="grid">
                             <div className="col">
-                                <h2 className="text-center">Snipers</h2>
+                                <Divider align="center">
+                                    <h2>Snipers</h2>
+                                </Divider>
                                 {snipers.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
                                         <ValorantWeaponTooltip
@@ -197,7 +207,9 @@ const ValorantWeapons = () => {
                                 )))}
                             </div>
                             <div className="col">
-                                <h2 className="text-center">Heavy</h2>
+                                <Divider align="center">
+                                    <h2>Heavy</h2>
+                                </Divider>
                                 {heavies.map(((weapon, index) => (
                                     <Fragment key={weapon.uuid}>
                                         <ValorantWeaponTooltip

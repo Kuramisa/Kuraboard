@@ -74,13 +74,19 @@ const client = new ApolloClient({
     cache
 });
 
+const pt = {
+    divider: {
+        content: { className: "bg-transparent" }
+    }
+};
+
 export default (
     <React.StrictMode>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <ApolloProvider client={client}>
                     <IconContext.Provider value={{ className: "mr-1", style: { marginTop: "2.5px" } }}>
-                        <PrimeReactProvider>
+                        <PrimeReactProvider value={{ pt }}>
                             <Router>
                                 <AuthProvider>
                                     <App />
