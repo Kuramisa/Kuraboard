@@ -57,7 +57,7 @@ const Navigation = () => {
                                 <Fragment key={index}>
                                     <Zoom cascade top>
                                         <Button
-                                            className={`${index !== 0 ? "ml-1" : ""} border-noround`}
+                                            className={`${index !== 0 ? "ml-1" : ""}`}
                                             outlined={button.outlined}
                                             severity={button.severity}
                                             onClick={(event) => menu.current?.toggle(event)}
@@ -73,7 +73,7 @@ const Navigation = () => {
                             ) : (
                                 <Zoom key={index} cascade top>
                                     <Button
-                                        className={`${index !== 0 ? "ml-1" : ""} border-noround`}
+                                        className={`${index !== 0 ? "ml-1" : ""}`}
                                         outlined={button.outlined}
                                         severity={button.severity}
                                         onClick={() => navigate(button.to ? button.to : "/")}
