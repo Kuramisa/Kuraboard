@@ -11,6 +11,7 @@ import Home from "./pages/Home.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import ValorantWeapons from "./pages/valorant/ValorantWeapons.tsx";
+import ValorantWeaponsPrototype from "./pages/valorant/ValorantWeaponsPrototype.tsx";
 
 const { VITE_UNDER_DEV } = import.meta.env;
 
@@ -31,6 +32,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/valorant">
                     <Route path="weapons" element={<ValorantWeapons />} />
+                    <Route path="weapons/prototype" element={<ValorantWeaponsPrototype />} />
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
