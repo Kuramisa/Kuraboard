@@ -11,3 +11,9 @@ export const FetchValorantWeapon = gql`
         weapon(weaponUuid: $weaponUuid, withSkins: $withSkins)
     }  
 `;
+
+export const FetchValorantSkins = gql`
+    query skins($weaponUuid: String!) {
+        skins(weaponUuid: $weaponUuid)
+    }
+`;
