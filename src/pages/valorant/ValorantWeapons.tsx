@@ -2,7 +2,7 @@ import { ApolloError, useQuery } from "@apollo/client";
 import { FetchValorantWeapons } from "../../gql/valorant.tsx";
 import { Weapons } from "@valapi/valorant-api.com";
 import { Image } from "primereact/image";
-import { filterAndSortWeapons } from "../../../util.tsx";
+import { filterAndSortWeapons } from "../../util.tsx";
 import { Fragment } from "react";
 import { Divider } from "primereact/divider";
 
