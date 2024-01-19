@@ -2,4 +2,4 @@
 
 ## Description
 
-As of right now the dashboard is a bare skeleton, nothing much to it
+Dashboard has Valorant Weapons wiki (For now)
