@@ -14,9 +14,7 @@ const ValorantStore = () => {
     const { auth } = useContext(AuthContext);
     const { userId } = useParams();
 
-    const [storeType, setStoreType] = useState<
-        "daily" | "featured" | "accessory"
-    >("daily");
+    const [storeType] = useState<"daily" | "featured" | "accessory">("daily");
 
     const { data: { user } = {} } = useQuery(FetchUser, {
         variables: {
