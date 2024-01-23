@@ -19,7 +19,7 @@ export const FetchValorantSkins = gql`
 `;
 
 export const FetchValorantStore = gql`
-    query store($auth: String) {
-        store(auth: $auth)
+    query dailyStore($auth: String, $userId: String) {
+        dailyStore(auth: $auth, userId: $userId)
     }
 `;

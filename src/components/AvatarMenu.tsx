@@ -20,7 +20,7 @@ const AvatarMenu = ({ auth }: { auth: any }) => {
         {
             label: "Valorant Store",
             icon: <img src="/val_points.png" alt="Valorant" width="24px" />,
-            command: () => navigate("/valorant/store"),
+            command: () => navigate("/valorant/store/@me"),
         },
         {
             label: "Profile",

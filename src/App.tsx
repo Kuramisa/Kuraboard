@@ -31,7 +31,10 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/valorant">
-                    <Route path="store" element={<ValorantStore />} />
+                    <Route path="store">
+                        <Route path="@me" element={<ValorantStore />} />
+                        <Route path=":userId" element={<ValorantStore />} />
+                    </Route>
                     <Route path="weapons" element={<ValorantWeapons />} />
                 </Route>
                 <Route path="/login" element={<Login />} />

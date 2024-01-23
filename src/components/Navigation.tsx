@@ -40,7 +40,7 @@ const Navigation = () => {
     if (auth)
         valorantMenu.unshift({
             label: "Store",
-            command: () => navigate("/valorant/store"),
+            command: () => navigate("/valorant/store/@me"),
         });
 
     return (
