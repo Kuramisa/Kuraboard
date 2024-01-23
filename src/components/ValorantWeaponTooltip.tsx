@@ -19,6 +19,7 @@ const ValorantWeaponTooltip = (
         >
             <div>
                 <h2 className="text-center">Stats</h2>
+                <h6 className="-mt-4 text-center">(Click to view skins)</h6>
                 <h5>
                     Damages {weapon.weaponStats.damageRanges.map((range, index) => (
                         <Fragment key={index}>
