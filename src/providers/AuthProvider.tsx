@@ -1,7 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { AuthUser } from "../gql/auth";
 import { login, logout } from "../reducers/auth";
 
@@ -16,7 +15,6 @@ const AuthContext = createContext({
 const AuthProvider = (props: any) => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.auth.user);
-    const navigate = useNavigate();
 
     const [authUser] = useMutation(AuthUser, {
         update: (_, { data: { authUser: authData } }) => {
@@ -30,7 +28,6 @@ const AuthProvider = (props: any) => {
     };
 
     const logoutUser = () => {
-        navigate("/");
         dispatch(logout());
         localStorage.removeItem("kuramisaToken");
     };
