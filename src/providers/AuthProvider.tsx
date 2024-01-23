@@ -10,7 +10,7 @@ const AuthContext = createContext({
     login: (userData: any) => userData,
     logout: () => {
         return;
-    }
+    },
 });
 
 const AuthProvider = (props: any) => {
@@ -21,7 +21,7 @@ const AuthProvider = (props: any) => {
     const [authUser] = useMutation(AuthUser, {
         update: (_, { data: { authUser: authData } }) => {
             dispatch(login(authData));
-        }
+        },
     });
 
     const loginUser = (token: string) => {
@@ -32,6 +32,7 @@ const AuthProvider = (props: any) => {
     const logoutUser = () => {
         navigate("/");
         dispatch(logout());
+        localStorage.removeItem("kuramisaToken");
     };
 
     return (
