@@ -6,6 +6,8 @@ import { filterAndSortWeapons } from "../../util.tsx";
 import { Fragment, useState } from "react";
 import { Divider } from "primereact/divider";
 
+import { isMobile } from "react-device-detect";
+
 import ValorantWeaponTooltip from "../../components/valorant/ValorantWeaponTooltip.tsx";
 import { Dialog } from "primereact/dialog";
 import {
@@ -68,7 +70,7 @@ const ValorantWeapons = () => {
                 <h1>Valorant Weapons</h1>
                 <div className="flex p-4 shadow-8 justify-content-between">
                     <div className="grid">
-                        <div className="col">
+                        <div className="col-12 md:col-6 lg:col-3">
                             <Divider align="center">
                                 <h2>Sidearms</h2>
                             </Divider>
@@ -109,8 +111,8 @@ const ValorantWeapons = () => {
                                 </Fragment>
                             ))}
                         </div>
-                        <Divider layout="vertical" />
-                        <div className="col">
+                        {!isMobile && <Divider layout="vertical" />}
+                        <div className="col-12 md:col-6 lg:col-3">
                             <div className="col">
                                 <Divider align="center">
                                     <h2>SMGs</h2>
@@ -191,7 +193,7 @@ const ValorantWeapons = () => {
                                 ))}
                             </div>
                         </div>
-                        <Divider layout="vertical" />
+                        {!isMobile && <Divider layout="vertical" />}
                         <div className="col">
                             <Divider align="center">
                                 <h2>Rifles</h2>
@@ -233,8 +235,8 @@ const ValorantWeapons = () => {
                                 </Fragment>
                             ))}
                         </div>
-                        <Divider layout="vertical" />
-                        <div className="col">
+                        {!isMobile && <Divider layout="vertical" />}
+                        <div className="col-12 md:col-6 lg:col-3">
                             <div className="col">
                                 <Divider align="center">
                                     <h2>Snipers</h2>
@@ -276,7 +278,7 @@ const ValorantWeapons = () => {
                                     </Fragment>
                                 ))}
                             </div>
-                            <div className="col">
+                            <div className="col-12 md:col-6 lg:col-3">
                                 <Divider align="center">
                                     <h2>Heavy</h2>
                                 </Divider>
