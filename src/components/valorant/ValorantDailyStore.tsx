@@ -47,8 +47,6 @@ const ValorantDailyStore = ({ userId }: { userId?: string }) => {
         );
     };
 
-    console.log(store);
-
     return (
         <TabView>
             {store.map((offer: any, index: number) => (
