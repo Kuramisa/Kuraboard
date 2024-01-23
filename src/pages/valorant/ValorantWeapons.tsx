@@ -8,13 +8,16 @@ import { Divider } from "primereact/divider";
 
 import ValorantWeaponTooltip from "../../components/ValorantWeaponTooltip.tsx";
 
-
 // TODO: Valorant Weapon Page with Skins on image click
 const ValorantWeapons = () => {
-    const { data: { weapons } = {}, loading, error } = useQuery(FetchValorantWeapons) as {
-        data: { weapons: Weapons.Weapons<"en-US">[] },
-        loading: boolean,
-        error?: ApolloError
+    const {
+        data: { weapons } = {},
+        loading,
+        error,
+    } = useQuery(FetchValorantWeapons) as {
+        data: { weapons: Weapons.Weapons<"en-US">[] };
+        loading: boolean;
+        error?: ApolloError;
     };
 
     if (loading) return <></>;
@@ -37,7 +40,7 @@ const ValorantWeapons = () => {
                         <Divider align="center">
                             <h2>Sidearms</h2>
                         </Divider>
-                        {sidearms.map(((weapon, index) => (
+                        {sidearms.map((weapon, index) => (
                             <Fragment key={weapon.uuid}>
                                 <ValorantWeaponTooltip
                                     weapons={sidearms}
@@ -48,7 +51,8 @@ const ValorantWeapons = () => {
                                 <div className="flex p-2 flex-column align-items-center">
                                     <Image
                                         src={weapon.displayIcon}
-                                        alt={weapon.displayName} width="86"
+                                        alt={weapon.displayName}
+                                        width="86"
                                         className={`sidearm-${index}`}
                                     />
                                     <div className="flex flex-column align-items-center">
@@ -58,82 +62,92 @@ const ValorantWeapons = () => {
                                                 src="/credits_icon.webp"
                                                 width="16"
                                             />
-                                            <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                            <p className="ml-1 pb-1">
+                                                {weapon.shopData.cost}
+                                            </p>
                                         </div>
                                     </div>
-                                    {index !== sidearms.length - 1 && <Divider type="dashed" />}
+                                    {index !== sidearms.length - 1 && (
+                                        <Divider type="dashed" />
+                                    )}
                                 </div>
                             </Fragment>
-                        )))}
+                        ))}
                     </div>
                     <Divider layout="vertical" />
                     <div className="col">
-                        <div className="grid">
-                            <div className="col">
-                                <Divider align="center">
-                                    <h2>SMGs</h2>
-                                </Divider>
-                                {smgs.map(((weapon, index) => (
-                                    <Fragment key={weapon.uuid}>
-                                        <ValorantWeaponTooltip
-                                            weapons={smgs}
-                                            weapon={weapon}
-                                            index={index}
-                                            weaponType="SMG"
+                        <div className="col">
+                            <Divider align="center">
+                                <h2>SMGs</h2>
+                            </Divider>
+                            {smgs.map((weapon, index) => (
+                                <Fragment key={weapon.uuid}>
+                                    <ValorantWeaponTooltip
+                                        weapons={smgs}
+                                        weapon={weapon}
+                                        index={index}
+                                        weaponType="SMG"
+                                    />
+                                    <div className="flex p-2 flex-column align-items-center">
+                                        <Image
+                                            src={weapon.displayIcon}
+                                            alt={weapon.displayName}
+                                            width="128"
+                                            className={`smg-${index}`}
                                         />
-                                        <div className="flex p-2 flex-column align-items-center">
-                                            <Image
-                                                src={weapon.displayIcon}
-                                                alt={weapon.displayName} width="128"
-                                                className={`smg-${index}`}
-                                            />
-                                            <div className="flex flex-column align-items-center">
-                                                <p>{weapon.displayName}</p>
-                                                <div className="flex align-items-center justify-content-center">
-                                                    <Image
-                                                        src="/credits_icon.webp"
-                                                        width="16"
-                                                    />
-                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
-                                                </div>
+                                        <div className="flex flex-column align-items-center">
+                                            <p>{weapon.displayName}</p>
+                                            <div className="flex align-items-center justify-content-center">
+                                                <Image
+                                                    src="/credits_icon.webp"
+                                                    width="16"
+                                                />
+                                                <p className="ml-1 pb-1">
+                                                    {weapon.shopData.cost}
+                                                </p>
                                             </div>
                                         </div>
-                                    </Fragment>
-                                )))}
-                            </div>
-                            <div className="col">
-                                <Divider align="center">
-                                    <h2>Shotguns</h2>
-                                </Divider>
-                                {shotguns.map(((weapon, index) => (
-                                    <Fragment key={weapon.uuid}>
-                                        <ValorantWeaponTooltip
-                                            weapons={shotguns}
-                                            weapon={weapon}
-                                            index={index}
-                                            weaponType="Shotgun"
+                                    </div>
+                                </Fragment>
+                            ))}
+                        </div>
+                        <div className="col">
+                            <Divider align="center">
+                                <h2>Shotguns</h2>
+                            </Divider>
+                            {shotguns.map((weapon, index) => (
+                                <Fragment key={weapon.uuid}>
+                                    <ValorantWeaponTooltip
+                                        weapons={shotguns}
+                                        weapon={weapon}
+                                        index={index}
+                                        weaponType="Shotgun"
+                                    />
+                                    <div className="flex p-2 flex-column align-items-center">
+                                        <Image
+                                            src={weapon.displayIcon}
+                                            alt={weapon.displayName}
+                                            width="128"
+                                            className={`shotgun-${index}`}
                                         />
-                                        <div className="flex p-2 flex-column align-items-center">
-                                            <Image
-                                                src={weapon.displayIcon}
-                                                alt={weapon.displayName} width="128"
-                                                className={`shotgun-${index}`}
-                                            />
-                                            <div className="flex flex-column align-items-center">
-                                                <p>{weapon.displayName}</p>
-                                                <div className="flex align-items-center justify-content-center">
-                                                    <Image
-                                                        src="/credits_icon.webp"
-                                                        width="16"
-                                                    />
-                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
-                                                </div>
+                                        <div className="flex flex-column align-items-center">
+                                            <p>{weapon.displayName}</p>
+                                            <div className="flex align-items-center justify-content-center">
+                                                <Image
+                                                    src="/credits_icon.webp"
+                                                    width="16"
+                                                />
+                                                <p className="ml-1 pb-1">
+                                                    {weapon.shopData.cost}
+                                                </p>
                                             </div>
                                         </div>
-                                        {index !== shotguns.length - 1 && <Divider type="dashed" />}
-                                    </Fragment>
-                                )))}
-                            </div>
+                                    </div>
+                                    {index !== shotguns.length - 1 && (
+                                        <Divider type="dashed" />
+                                    )}
+                                </Fragment>
+                            ))}
                         </div>
                     </div>
                     <Divider layout="vertical" />
@@ -141,7 +155,7 @@ const ValorantWeapons = () => {
                         <Divider align="center">
                             <h2>Rifles</h2>
                         </Divider>
-                        {rifles.map(((weapon, index) => (
+                        {rifles.map((weapon, index) => (
                             <Fragment key={weapon.uuid}>
                                 <ValorantWeaponTooltip
                                     weapons={rifles}
@@ -152,7 +166,8 @@ const ValorantWeapons = () => {
                                 <div className="flex p-2 flex-column align-items-center">
                                     <Image
                                         src={weapon.displayIcon}
-                                        alt={weapon.displayName} width="128"
+                                        alt={weapon.displayName}
+                                        width="128"
                                         className={`rifle-${index}`}
                                     />
                                     <div className="flex flex-column align-items-center">
@@ -162,83 +177,95 @@ const ValorantWeapons = () => {
                                                 src="/credits_icon.webp"
                                                 width="16"
                                             />
-                                            <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
+                                            <p className="ml-1 pb-1">
+                                                {weapon.shopData.cost}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                {index !== rifles.length - 1 && <Divider type="dashed" />}
+                                {index !== rifles.length - 1 && (
+                                    <Divider type="dashed" />
+                                )}
                             </Fragment>
-                        )))}
+                        ))}
                     </div>
                     <Divider layout="vertical" />
                     <div className="col">
-                        <div className="grid">
-                            <div className="col">
-                                <Divider align="center">
-                                    <h2>Snipers</h2>
-                                </Divider>
-                                {snipers.map(((weapon, index) => (
-                                    <Fragment key={weapon.uuid}>
-                                        <ValorantWeaponTooltip
-                                            weapons={snipers}
-                                            weapon={weapon}
-                                            index={index}
-                                            weaponType="Sniper"
+                        <div className="col">
+                            <Divider align="center">
+                                <h2>Snipers</h2>
+                            </Divider>
+                            {snipers.map((weapon, index) => (
+                                <Fragment key={weapon.uuid}>
+                                    <ValorantWeaponTooltip
+                                        weapons={snipers}
+                                        weapon={weapon}
+                                        index={index}
+                                        weaponType="Sniper"
+                                    />
+                                    <div className="flex p-2 flex-column align-items-center">
+                                        <Image
+                                            src={weapon.displayIcon}
+                                            alt={weapon.displayName}
+                                            width="128"
+                                            className={`sniper-${index}`}
                                         />
-                                        <div className="flex p-2 flex-column align-items-center">
-                                            <Image
-                                                src={weapon.displayIcon}
-                                                alt={weapon.displayName} width="128"
-                                                className={`sniper-${index}`}
-                                            />
-                                            <div className="flex flex-column align-items-center">
-                                                <p>{weapon.displayName}</p>
-                                                <div className="flex align-items-center justify-content-center">
-                                                    <Image
-                                                        src="/credits_icon.webp"
-                                                        width="16"
-                                                    />
-                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
-                                                </div>
+                                        <div className="flex flex-column align-items-center">
+                                            <p>{weapon.displayName}</p>
+                                            <div className="flex align-items-center justify-content-center">
+                                                <Image
+                                                    src="/credits_icon.webp"
+                                                    width="16"
+                                                />
+                                                <p className="ml-1 pb-1">
+                                                    {weapon.shopData.cost}
+                                                </p>
                                             </div>
                                         </div>
-                                        {index !== snipers.length - 1 && <Divider type="dashed" />}
-                                    </Fragment>
-                                )))}
-                            </div>
-                            <div className="col">
-                                <Divider align="center">
-                                    <h2>Heavy</h2>
-                                </Divider>
-                                {heavies.map(((weapon, index) => (
-                                    <Fragment key={weapon.uuid}>
-                                        <ValorantWeaponTooltip
-                                            weapons={heavies}
-                                            weapon={weapon}
-                                            index={index}
-                                            weaponType="Heavy"
+                                    </div>
+                                    {index !== snipers.length - 1 && (
+                                        <Divider type="dashed" />
+                                    )}
+                                </Fragment>
+                            ))}
+                        </div>
+                        <div className="col">
+                            <Divider align="center">
+                                <h2>Heavy</h2>
+                            </Divider>
+                            {heavies.map((weapon, index) => (
+                                <Fragment key={weapon.uuid}>
+                                    <ValorantWeaponTooltip
+                                        weapons={heavies}
+                                        weapon={weapon}
+                                        index={index}
+                                        weaponType="Heavy"
+                                    />
+                                    <div className="flex p-2 flex-column align-items-center">
+                                        <Image
+                                            src={weapon.displayIcon}
+                                            alt={weapon.displayName}
+                                            width="128"
+                                            className={`heavy-${index}`}
                                         />
-                                        <div className="flex p-2 flex-column align-items-center">
-                                            <Image
-                                                src={weapon.displayIcon}
-                                                alt={weapon.displayName} width="128"
-                                                className={`heavy-${index}`}
-                                            />
-                                            <div className="flex flex-column align-items-center">
-                                                <p>{weapon.displayName}</p>
-                                                <div className="flex align-items-center justify-content-center">
-                                                    <Image
-                                                        src="/credits_icon.webp"
-                                                        width="16"
-                                                    />
-                                                    <p className="ml-1 pb-1">{weapon.shopData.cost}</p>
-                                                </div>
+                                        <div className="flex flex-column align-items-center">
+                                            <p>{weapon.displayName}</p>
+                                            <div className="flex align-items-center justify-content-center">
+                                                <Image
+                                                    src="/credits_icon.webp"
+                                                    width="16"
+                                                />
+                                                <p className="ml-1 pb-1">
+                                                    {weapon.shopData.cost}
+                                                </p>
                                             </div>
                                         </div>
-                                        {index !== heavies.length - 1 && <Divider type="dashed" />}
-                                    </Fragment>
-                                )))}
-                            </div>
+                                    </div>
+                                    {index !== heavies.length - 1 && (
+                                        <Divider type="dashed" />
+                                    )}
+                                </Fragment>
+                            ))}
                         </div>
                     </div>
                 </div>
