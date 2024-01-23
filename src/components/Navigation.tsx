@@ -32,14 +32,16 @@ const Navigation = () => {
 
     const valorantMenu: MenuItem[] = [
         {
-            label: "Store",
-            command: () => navigate("/valorant/store"),
-        },
-        {
             label: "Weapons",
             command: () => navigate("/valorant/weapons"),
         },
     ];
+
+    if (auth)
+        valorantMenu.unshift({
+            label: "Store",
+            command: () => navigate("/valorant/store"),
+        });
 
     return (
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
