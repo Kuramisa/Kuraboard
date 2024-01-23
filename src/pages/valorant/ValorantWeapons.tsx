@@ -6,12 +6,12 @@ import { filterAndSortWeapons } from "../../util.tsx";
 import { Fragment, useState } from "react";
 import { Divider } from "primereact/divider";
 
-import ValorantWeaponTooltip from "../../components/ValorantWeaponTooltip.tsx";
+import ValorantWeaponTooltip from "../../components/valorant/ValorantWeaponTooltip.tsx";
 import { Dialog } from "primereact/dialog";
 import {
     ValorantDialogContent,
     ValorantDialogHeader,
-} from "./ValorantDialogComponents.tsx";
+} from "../../components/valorant/ValorantDialogComponents.tsx";
 import { Button } from "primereact/button";
 
 // TODO: Valorant Weapon Page with Skins on image click
