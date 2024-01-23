@@ -16,13 +16,13 @@ const buttons: (ButtonProps & { to?: string })[] = [
         label: "Home",
         severity: "success",
         outlined: true,
-        to: "/"
+        to: "/",
     },
     {
         label: "Valorant",
         severity: "danger",
-        outlined: true
-    }
+        outlined: true,
+    },
 ];
 
 const Navigation = () => {
@@ -32,16 +32,24 @@ const Navigation = () => {
 
     const valorantMenu: MenuItem[] = [
         {
+            label: "Store",
+            command: () => navigate("/valorant/store"),
+        },
+        {
             label: "Weapons",
-            command: () => navigate("/valorant/weapons")
-        }
+            command: () => navigate("/valorant/weapons"),
+        },
     ];
 
     return (
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
             <div className="flex gap-2 align-items-center justify-content-start">
                 <Zoom cascade left>
-                    <img alt="Kuramisa" src="/logo.png" style={{ width: "64px" }} />
+                    <img
+                        alt="Kuramisa"
+                        src="/logo.png"
+                        style={{ width: "64px" }}
+                    />
                     <h3>Kuramisa</h3>
                 </Zoom>
                 <div className="ml-3">
@@ -52,7 +60,7 @@ const Navigation = () => {
                         breakpoint="767px"
                     />
                     <div className="flex justify-content-between">
-                        {buttons.map((button, index) => (
+                        {buttons.map((button, index) =>
                             button.label === "Valorant" ? (
                                 <Fragment key={index}>
                                     <Zoom cascade top>
@@ -60,10 +68,15 @@ const Navigation = () => {
                                             className={`${index !== 0 ? "ml-1" : ""}`}
                                             outlined={button.outlined}
                                             severity={button.severity}
-                                            onClick={(event) => menu.current?.toggle(event)}
+                                            onClick={(event) =>
+                                                menu.current?.toggle(event)
+                                            }
                                         >
                                             <Zoom key={index} cascade top>
-                                                <span key={index} className="font-semibold">
+                                                <span
+                                                    key={index}
+                                                    className="font-semibold"
+                                                >
                                                     {button.label}
                                                 </span>
                                             </Zoom>
@@ -76,7 +89,11 @@ const Navigation = () => {
                                         className={`${index !== 0 ? "ml-1" : ""}`}
                                         outlined={button.outlined}
                                         severity={button.severity}
-                                        onClick={() => navigate(button.to ? button.to : "/")}
+                                        onClick={() =>
+                                            navigate(
+                                                button.to ? button.to : "/",
+                                            )
+                                        }
                                     >
                                         <Zoom cascade top>
                                             <span className="font-semibold">
@@ -85,8 +102,8 @@ const Navigation = () => {
                                         </Zoom>
                                     </Button>
                                 </Zoom>
-                            )
-                        ))}
+                            ),
+                        )}
                     </div>
                 </div>
             </div>
@@ -110,7 +127,7 @@ const Navigation = () => {
 };
 
 Navigation.propTypes = {
-    bot: PropTypes.any
+    bot: PropTypes.any,
 };
 
 export default Navigation;

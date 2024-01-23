@@ -17,3 +17,9 @@ export const FetchValorantSkins = gql`
         skins(weaponUuid: $weaponUuid, sortAlphabetically: $sortAlphabetically)
     }
 `;
+
+export const FetchValorantStore = gql`
+    query store($auth: String!) {
+        store(auth: $auth)
+    }
+`;
