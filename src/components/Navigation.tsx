@@ -45,7 +45,7 @@ const Navigation = () => {
 
     return (
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
-            <div className="flex gap-2 align-items-center justify-content-start">
+            <div className="flex flex-wrap gap-2 align-items-center justify-content-start">
                 <Zoom cascade left>
                     <img
                         alt="Kuramisa"
@@ -109,7 +109,7 @@ const Navigation = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-2 align-items-center justify-content-end">
+            <div className="flex flex-wrap gap-2 align-items-center justify-content-end">
                 {auth ? (
                     <AvatarMenu auth={auth} />
                 ) : (
