@@ -41,7 +41,9 @@ const ValorantStore = () => {
                     {capitalize(storeType)} Store
                 </h1>
             </div>
-            {storeType === "daily" && <ValorantDailyStore userId={userId} />}
+            {storeType === "daily" && (
+                <ValorantDailyStore authId={auth.id} user={user} />
+            )}
         </div>
     );
 };

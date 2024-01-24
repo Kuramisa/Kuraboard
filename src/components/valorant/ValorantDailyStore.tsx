@@ -13,7 +13,13 @@ import { Image } from "primereact/image";
 import ErrorMessage from "../ErrorMessage";
 import LoadingMessage from "../LoadingMessage";
 
-const ValorantDailyStore = ({ userId }: { userId?: string }) => {
+const ValorantDailyStore = ({
+    authId,
+    user,
+}: {
+    authId?: string;
+    user: any;
+}) => {
     const {
         data: { dailyStore: store } = {},
         error,
@@ -21,12 +27,21 @@ const ValorantDailyStore = ({ userId }: { userId?: string }) => {
     } = useQuery(FetchValorantStore, {
         variables: {
             auth: localStorage.getItem("kuramisaToken"),
-            userId: userId ?? null,
+            userId: user.id ?? null,
         },
     });
 
     if (loading) return <LoadingMessage message="Loading your store(s)..." />;
-    if (error) return <ErrorMessage message={error.message} />;
+    if (error)
+        return (
+            <ErrorMessage
+                message={
+                    authId !== user.id
+                        ? `${user.globalName ?? user.username} have/has not logged into their Valorant accounts`
+                        : error.message
+                }
+            />
+        );
 
     const headerTemplate = (
         options: TabPanelHeaderTemplateOptions,
