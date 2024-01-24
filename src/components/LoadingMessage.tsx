@@ -14,7 +14,7 @@ const LoadingMessage = ({
             fill="var(--surface-ground)"
             animationDuration=".5s"
         />
-        <h1 className="text-center">{message}</h1>
+        <h2 className="text-center">{message}</h2>
         {subtext && <p className="text-center">{subtext}</p>}
     </div>
 );
