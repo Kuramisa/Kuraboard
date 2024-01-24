@@ -31,7 +31,12 @@ const ValorantDailyStore = ({
         },
     });
 
-    if (loading) return <LoadingMessage message="Loading your store(s)..." />;
+    if (loading)
+        return (
+            <LoadingMessage
+                message={`Loading ${authId === user.id ? "your" : ""} store(s)...`}
+            />
+        );
     if (error)
         return (
             <ErrorMessage
