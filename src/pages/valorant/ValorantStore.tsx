@@ -9,6 +9,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 import ValorantDailyStore from "../../components/valorant/ValorantDailyStore";
 import { FetchUser } from "../../gql/users";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const ValorantStore = () => {
     const { auth } = useContext(AuthContext);
@@ -18,9 +19,14 @@ const ValorantStore = () => {
 
     const { data: { user } = {} } = useQuery(FetchUser, {
         variables: {
-            userId: userId ?? auth.id,
+            userId: userId ?? auth?.id,
         },
     });
+
+    if (!auth)
+        return (
+            <ErrorMessage message="You must be logged in to view this page" />
+        );
 
     if (!user) return <></>;
 
