@@ -1,5 +1,5 @@
 import { Weapons } from "@valapi/valorant-api.com";
-import { VWeaponCategory } from "../../vite-env";
+import { VWeaponCategory } from "kuraboard";
 import { Tooltip } from "primereact/tooltip";
 import { Fragment } from "react";
 
