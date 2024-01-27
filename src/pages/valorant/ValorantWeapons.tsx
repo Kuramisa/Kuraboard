@@ -41,6 +41,7 @@ const ValorantWeapons = () => {
     const rifles = filterAndSortWeapons(weapons, "Rifle");
     const snipers = filterAndSortWeapons(weapons, "Sniper");
     const heavies = filterAndSortWeapons(weapons, "Heavy");
+    const melee = weapons.find((weapon) => weapon.displayName === "Melee");
 
     const footerContent = (
         <div>
@@ -97,7 +98,8 @@ const ValorantWeapons = () => {
                                                 width="16"
                                             />
                                             <p className="ml-1 pb-1">
-                                                {weapon.shopData.cost}
+                                                {weapon.shopData?.cost ??
+                                                    "Unbuyable"}
                                             </p>
                                         </div>
                                     </div>
@@ -140,7 +142,8 @@ const ValorantWeapons = () => {
                                                     width="16"
                                                 />
                                                 <p className="ml-1 pb-1">
-                                                    {weapon.shopData.cost}
+                                                    {weapon.shopData?.cost ??
+                                                        "Unbuyable"}
                                                 </p>
                                             </div>
                                         </div>
@@ -178,7 +181,8 @@ const ValorantWeapons = () => {
                                                     width="16"
                                                 />
                                                 <p className="ml-1 pb-1">
-                                                    {weapon.shopData.cost}
+                                                    {weapon.shopData?.cost ??
+                                                        "Unbuyable"}
                                                 </p>
                                             </div>
                                         </div>
@@ -219,7 +223,8 @@ const ValorantWeapons = () => {
                                                 width="16"
                                             />
                                             <p className="ml-1 pb-1">
-                                                {weapon.shopData.cost}
+                                                {weapon.shopData?.cost ??
+                                                    "Unbuyable"}
                                             </p>
                                         </div>
                                     </div>
@@ -262,7 +267,8 @@ const ValorantWeapons = () => {
                                                     width="16"
                                                 />
                                                 <p className="ml-1 pb-1">
-                                                    {weapon.shopData.cost}
+                                                    {weapon.shopData?.cost ??
+                                                        "Unbuyable"}
                                                 </p>
                                             </div>
                                         </div>
@@ -303,7 +309,8 @@ const ValorantWeapons = () => {
                                                     width="16"
                                                 />
                                                 <p className="ml-1 pb-1">
-                                                    {weapon.shopData.cost}
+                                                    {weapon.shopData?.cost ??
+                                                        "Unbuyable"}
                                                 </p>
                                             </div>
                                         </div>
@@ -313,6 +320,32 @@ const ValorantWeapons = () => {
                                     )}
                                 </Fragment>
                             ))}
+                        </div>
+                    </div>
+                    <div className="col-12 md:col-6 lg:col-2">
+                        <Divider align="center">
+                            <h2>Melee</h2>
+                        </Divider>
+                        <div className="flex p-2 flex-column align-items-center">
+                            <Image
+                                src={melee?.displayIcon}
+                                alt={melee?.displayName}
+                                width="128"
+                                className="melee"
+                                onClick={() => setCurrentWeapon(melee!)}
+                            />
+                            <div className="flex flex-column align-items-center">
+                                <p>{melee?.displayName}</p>
+                                <div className="flex align-items-center justify-content-center">
+                                    <Image
+                                        src="/credits_icon.webp"
+                                        width="16"
+                                    />
+                                    <p className="ml-1 pb-1">
+                                        {melee?.shopData?.cost ?? "Unbuyable"}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
