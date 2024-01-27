@@ -1,5 +1,4 @@
-import { Weapons } from "@valapi/valorant-api.com";
-import { VWeaponCategory } from "kuraboard";
+import { IValorantWeapon, VWeaponCategory } from "kuraboard";
 import { Tooltip } from "primereact/tooltip";
 import { Fragment } from "react";
 
@@ -9,8 +8,8 @@ const ValorantWeaponTooltip = ({
     index,
     weaponType,
 }: {
-    weapons: Weapons.Weapons<"en-US">[];
-    weapon: Weapons.Weapons<"en-US">;
+    weapons: IValorantWeapon[];
+    weapon: IValorantWeapon;
     index: number;
     weaponType: VWeaponCategory;
 }) => {

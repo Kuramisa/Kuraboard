@@ -1,6 +1,5 @@
 import { ApolloError, useQuery } from "@apollo/client";
 import { FetchValorantWeapons } from "../../gql/valorant.tsx";
-import { Weapons } from "@valapi/valorant-api.com";
 import { Image } from "primereact/image";
 import { filterAndSortWeapons } from "../../util.tsx";
 import { Fragment, useState } from "react";
@@ -15,6 +14,7 @@ import {
     ValorantDialogHeader,
 } from "../../components/valorant/ValorantDialogComponents.tsx";
 import { Button } from "primereact/button";
+import { IValorantWeapon } from "kuraboard";
 
 const ValorantWeapons = () => {
     const {
@@ -22,13 +22,14 @@ const ValorantWeapons = () => {
         loading,
         error,
     } = useQuery(FetchValorantWeapons) as {
-        data: { weapons: Weapons.Weapons<"en-US">[] };
+        data: { weapons: IValorantWeapon[] };
         loading: boolean;
         error?: ApolloError;
     };
 
-    const [currentWeapon, setCurrentWeapon] =
-        useState<Weapons.Weapons<"en-US"> | null>(null);
+    const [currentWeapon, setCurrentWeapon] = useState<IValorantWeapon | null>(
+        null,
+    );
 
     if (loading) return <></>;
     if (error) return <></>;
