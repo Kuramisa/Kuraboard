@@ -14,6 +14,6 @@ const ValorantSkin = () => {
     console.log({ skin, error, loading });
 
     return <div>{skinUuid}</div>;
-}
+};
 
 export default ValorantSkin;
