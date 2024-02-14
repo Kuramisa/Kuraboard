@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound.tsx";
 
 import ValorantWeapons from "./pages/valorant/ValorantWeapons.tsx";
 import ValorantStore from "./pages/valorant/ValorantStore.tsx";
+import ValorantSkin from "./pages/valorant/ValorantSkin.tsx";
 
 const { VITE_UNDER_DEV } = import.meta.env;
 
@@ -36,12 +37,15 @@ const App = () => {
                         <Route path=":userId" element={<ValorantStore />} />
                     </Route>
                     <Route path="weapons" element={<ValorantWeapons />} />
+                    <Route path="skin">
+                        <Route path=":skinUuid" element={<ValorantSkin />} />
+                    </Route>
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </div>
+        </div >
     );
 };
 

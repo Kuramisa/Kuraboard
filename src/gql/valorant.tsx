@@ -18,8 +18,15 @@ export const FetchValorantSkins = gql`
     }
 `;
 
+export const FetchValorantSkin = gql`
+    query ($skinUuid: String!) {
+        skin(skinUuid: $skinUuid)
+    }
+`;
+
+
 export const FetchValorantStore = gql`
     query dailyStore($auth: String, $userId: String) {
-        dailyStore(auth: $auth, userId: $userId)
-    }
+    dailyStore(auth: $auth, userId: $userId)
+}
 `;

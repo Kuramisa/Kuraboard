@@ -4,6 +4,7 @@ import { DataScroller } from "primereact/datascroller";
 import { Button } from "primereact/button";
 import { IValorantWeapon, IValorantWeaponSkin } from "kuraboard";
 import { Image } from "primereact/image";
+import { Link } from "react-router-dom";
 
 const ValorantDialogHeader = ({ weapon }: { weapon: IValorantWeapon }) => {
     return (
@@ -33,17 +34,18 @@ const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
         return (
             <div className="col-12">
                 <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-                    <img
+                    <Link to={`/valorant/skin/${skin.uuid}`}><img
                         className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
                         src={skin.levels[0].displayIcon}
                         alt={skin.displayName}
                     />
+                    </Link>
                     <div className="flex flex-column lg:flex-row justify-content-between align-items-center xl:align-items-start lg:flex-1 gap-4">
                         <div className="flex flex-column align-items-center lg:align-items-start gap-3">
                             <div className="flex flex-column gap-2">
                                 <div className="flex gap-3">
                                     <div className="text-2xl font-bold text-900">
-                                        {skin.displayName}
+                                        <Link to={`/valorant/skin/${skin.uuid}`}>{skin.displayName}</Link>
                                     </div>
 
                                     <div className="text-lg font-bold text-900">
