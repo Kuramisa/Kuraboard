@@ -559,7 +559,7 @@ declare module "kuraboard" {
 
     type ValorantSkinCollection = Collection<string, ValorantSkin>;
 
-    interface ValorantAccount {
+    interface IValorantAccount {
         username: string;
         user: User;
         auth: WebClient;
