@@ -5,9 +5,9 @@ const ErrorMessage = ({
     message: string;
     subtext?: string;
 }) => (
-    <div className="flex flex-column align-items-center p-8">
+    <div className="flex flex-column align-items-center">
         <h2 className="text-center">{message}</h2>
-        {subtext && <p className="text-center">{subtext}</p>}
+        {subtext && <p className="text-center" style={{ marginTop: -1 }}>{subtext}</p>}
     </div>
 );
 
