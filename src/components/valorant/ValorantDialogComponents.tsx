@@ -70,6 +70,7 @@ const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
                                                         )
                                                         .trim()}
                                                     severity="secondary"
+                                                    size="small"
                                                 />
                                             ))}
                                     </div>
