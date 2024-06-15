@@ -32,24 +32,26 @@ const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
     const itemTemplate = (skin: IValorantWeaponSkin) => {
         return (
             <div className="col-12">
-                <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+                <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-2">
                     <img
                         className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
                         src={skin.levels[0].displayIcon}
                         alt={skin.displayName}
                     />
-                    <div className="flex flex-column lg:flex-row justify-content-between align-items-center xl:align-items-start lg:flex-1 gap-4">
-                        <div className="flex flex-column align-items-center lg:align-items-start gap-3">
-                            <div className="flex flex-column gap-2">
-                                <div className="flex gap-3">
+                    <div className="flex flex-column lg:flex-row justify-content-between align-items-center xl:align-items-start lg:flex-1">
+                        <div className="flex flex-column align-items-center lg:align-items-start">
+                            <div className="flex flex-column">
+                                <div className="flex gap-3 align-items-center">
                                     <div className="text-2xl font-bold text-900">
                                         {skin.displayName}
                                     </div>
 
-                                    <div className="text-lg font-bold text-900">
+                                    <div className="flex align-items-center justify-content-betwee gap-1 text-lg font-bold text-900">
                                         <Image
+                                            alt="Valorant Points"
                                             src="/val_points.png"
                                             width="24"
+                                            style={{ marginBottom: -5 }}
                                         />{" "}
                                         {skin.cost}
                                     </div>
