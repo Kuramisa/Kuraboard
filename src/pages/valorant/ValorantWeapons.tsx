@@ -10,9 +10,9 @@ import { isMobile } from "react-device-detect";
 import ValorantWeaponTooltip from "../../components/valorant/ValorantWeaponTooltip.tsx";
 import { Dialog } from "primereact/dialog";
 import {
-    ValorantDialogContent,
-    ValorantDialogHeader,
-} from "../../components/valorant/ValorantDialogComponents.tsx";
+    ValorantSkinDialogContent,
+    ValorantSkinDialogHeader,
+} from "../../components/valorant/ValorantSkinDialogComponents.tsx";
 import { Button } from "primereact/button";
 import { IValorantWeapon } from "kuraboard";
 
@@ -58,13 +58,13 @@ const ValorantWeapons = () => {
             {currentWeapon && (
                 <Dialog
                     style={{ width: "50vw " }}
-                    header={<ValorantDialogHeader weapon={currentWeapon} />}
+                    header={<ValorantSkinDialogHeader weapon={currentWeapon} />}
                     visible={true}
                     onHide={() => setCurrentWeapon(null)}
                     footer={footerContent}
                     breakpoints={{ "960px": "75vw", "641px": "100vw" }}
                 >
-                    <ValorantDialogContent weapon={currentWeapon} />
+                    <ValorantSkinDialogContent weapon={currentWeapon} />
                 </Dialog>
             )}
             <div className="flex flex-column p-3 justify-content-center align-items-center">

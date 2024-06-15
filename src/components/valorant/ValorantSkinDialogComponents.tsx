@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 import { IValorantWeapon, IValorantWeaponSkin } from "kuraboard";
 import { Image } from "primereact/image";
 
-const ValorantDialogHeader = ({ weapon }: { weapon: IValorantWeapon }) => {
+const ValorantSkinDialogHeader = ({ weapon }: { weapon: IValorantWeapon }) => {
     return (
         <div className="flex align-items-center justify-content-center">
             <span className="font-bold white-space-nowrap">
@@ -15,7 +15,7 @@ const ValorantDialogHeader = ({ weapon }: { weapon: IValorantWeapon }) => {
     );
 };
 
-const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
+const ValorantSkinDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
     const { data: { skins } = {} } = useQuery(FetchValorantSkins, {
         variables: {
             weaponUuid: weapon.uuid,
@@ -56,7 +56,7 @@ const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
                                         {skin.cost}
                                     </div>
                                 </div>
-                                {skin.levels.length > 1 && (
+                                {/*skin.levels.length > 1 && (
                                     <div className="flex gap-1">
                                         {skin.levels
                                             .slice(1)
@@ -74,7 +74,7 @@ const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
                                                 />
                                             ))}
                                     </div>
-                                )}
+                                )*/}
                             </div>
                         </div>
                     </div>
@@ -93,4 +93,4 @@ const ValorantDialogContent = ({ weapon }: { weapon: IValorantWeapon }) => {
     );
 };
 
-export { ValorantDialogHeader, ValorantDialogContent };
+export { ValorantSkinDialogHeader, ValorantSkinDialogContent };
