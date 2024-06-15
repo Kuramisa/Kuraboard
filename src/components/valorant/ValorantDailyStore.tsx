@@ -43,8 +43,9 @@ const ValorantDailyStore = ({
                 message={
                     authId !== user.id
                         ? `${user.globalName ?? user.username} have/has not logged into their Valorant accounts`
-                        : error.message
+                        : error.message.split(".")[0]
                 }
+                subtext="Please login with the bot on Discord to view your store(s)"
             />
         );
 
