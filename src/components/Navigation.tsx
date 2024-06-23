@@ -52,6 +52,8 @@ const Navigation = () => {
                         src="/logo.png"
                         style={{ width: "64px" }}
                     />
+                </Zoom>
+                <Zoom cascade top>
                     <h3>Kuramisa</h3>
                 </Zoom>
                 <div className="ml-3">
