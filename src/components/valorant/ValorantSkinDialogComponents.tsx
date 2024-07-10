@@ -1,7 +1,6 @@
 import { ApolloError, useQuery } from "@apollo/client";
 import { FetchValorantSkins } from "../../gql/valorant";
 import { DataScroller } from "primereact/datascroller";
-import { Button } from "primereact/button";
 import { IValorantWeapon, IValorantWeaponSkin } from "kuraboard";
 import { Image } from "primereact/image";
 
