@@ -23,12 +23,18 @@ const buttons: (ButtonProps & { to?: string })[] = [
         severity: "danger",
         outlined: true,
     },
+    {
+        label: "Legal",
+        severity: "warning",
+        outlined: true,
+    },
 ];
 
 const Navigation = () => {
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
-    const menu = useRef<TieredMenu>(null);
+    const valorantMenuRef = useRef<TieredMenu>(null);
+    const legalMenuRef = useRef<TieredMenu>(null);
 
     const valorantMenu: MenuItem[] = [
         {
@@ -42,6 +48,17 @@ const Navigation = () => {
             label: "Store",
             command: () => navigate("/valorant/store/@me"),
         });
+
+    const legalMenu: MenuItem[] = [
+        {
+            label: "Terms of Service",
+            command: () => navigate("/tos"),
+        },
+        {
+            label: "Privacy Policy",
+            command: () => navigate("/privacy"),
+        },
+    ];
 
     return (
         <nav className="flex p-3 shadow-8 align-items-center justify-content-between">
@@ -58,23 +75,37 @@ const Navigation = () => {
                 </Zoom>
                 <div className="ml-3">
                     <TieredMenu
-                        ref={menu}
+                        ref={valorantMenuRef}
                         popup
                         model={valorantMenu}
                         breakpoint="767px"
                     />
+                    <TieredMenu
+                        ref={legalMenuRef}
+                        popup
+                        model={legalMenu}
+                        breakpoint="767px"
+                    />
                     <div className="flex justify-content-between">
                         {buttons.map((button, index) =>
-                            button.label === "Valorant" ? (
+                            button.label === "Valorant" ||
+                            button.label === "Legal" ? (
                                 <Fragment key={index}>
                                     <Zoom cascade top>
                                         <Button
                                             className={`${index !== 0 ? "ml-1" : ""}`}
                                             outlined={button.outlined}
                                             severity={button.severity}
-                                            onClick={(event) =>
-                                                menu.current?.toggle(event)
-                                            }
+                                            onClick={(event) => {
+                                                if (button.label === "Valorant")
+                                                    valorantMenuRef.current?.toggle(
+                                                        event,
+                                                    );
+                                                if (button.label === "Legal")
+                                                    legalMenuRef.current?.toggle(
+                                                        event,
+                                                    );
+                                            }}
                                         >
                                             <Zoom key={index} cascade top>
                                                 <span

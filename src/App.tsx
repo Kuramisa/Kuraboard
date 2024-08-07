@@ -12,6 +12,8 @@ import NotFound from "./pages/NotFound.tsx";
 
 import ValorantWeapons from "./pages/valorant/ValorantWeapons.tsx";
 import ValorantStore from "./pages/valorant/ValorantStore.tsx";
+import TermsOfService from "./pages/TermsOfService.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
 const { VITE_UNDER_DEV } = import.meta.env;
 
@@ -28,19 +30,23 @@ const App = () => {
     return (
         <div className="block">
             <Navigation />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/valorant">
-                    <Route path="store">
-                        <Route path="@me" element={<ValorantStore />} />
-                        <Route path=":userId" element={<ValorantStore />} />
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/valorant">
+                        <Route path="store">
+                            <Route path="@me" element={<ValorantStore />} />
+                            <Route path=":userId" element={<ValorantStore />} />
+                        </Route>
+                        <Route path="weapons" element={<ValorantWeapons />} />
                     </Route>
-                    <Route path="weapons" element={<ValorantWeapons />} />
-                </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/logout" element={<Logout />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/tos" element={<TermsOfService />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </div>
         </div>
     );
 };
